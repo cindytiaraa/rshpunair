@@ -1,0 +1,109 @@
+/* ======== GLOBAL STYLE ======== */
+:root {
+    --blue-dark: #003b6d;
+    --blue-mid: #0078b8;
+    --blue-light: #00b7ff;
+    --accent: #ffc857;
+    --muted: #6b7280;
+    --bg-light: #f3f8ff;
+    --radius: 14px;
+    --shadow: 0 8px 20px rgba(4, 30, 57, 0.12);
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, #eaf5ff 0%, #f7fbff 50%, #f0f7ff 100%);
+    font-family: "Inter", sans-serif;
+}
+
+/* ========== HEADER ========== */
+.public-header{
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+  padding: 28px 16px;
+  color:white;
+}
+.header-inner{
+  max-width:var(--max-width);
+  margin:auto;
+  display:flex;
+  gap:28px;
+  align-items:center;
+  justify-content:center;
+}
+.logo-left,.logo-right{
+  width:80px;
+}
+.title-block{text-align:center;}
+.title-block h1{
+  margin:0; font-size:26px; font-weight:700;
+}
+.title-block p{
+  margin-top:4px; font-size:14px; opacity:0.95;
+}
+
+/* ========== NAVBAR ========== */
+.public-navbar{
+  margin:16px auto 20px;
+  max-width:var(--max-width);
+  background: linear-gradient(90deg, rgba(0,119,184,0.22), rgba(0,183,255,0.15));
+  padding:12px 18px;
+  border-radius: var(--radius);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+
+.nav-right{
+  position:absolute;
+  right:18px;
+  padding:7px 14px;
+  background:white;
+  border-radius: var(--radius);
+  font-weight:700;
+  text-decoration:none;
+  color:var(--blue-dark);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.08);
+}
+
+.menu-center{
+  display:flex;
+  gap:32px;
+}
+.menu-center .nav-item{
+  text-decoration:none;
+  font-weight:600;
+  color:var(--blue-dark);
+  padding:5px 10px;
+  border-radius:8px;
+  transition:.2s;
+}
+.menu-center .nav-item:hover{
+  transform:translateY(-3px);
+  color:#00385f;
+}
+
+/* ========== FOOTER ========== */
+.public-footer{
+  margin-top:40px;
+  text-align:center;
+  padding:20px;
+  background: linear-gradient(180deg, var(--blue-dark), #03507f);
+  color:white;
+  border-radius:14px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .grid-3{ grid-template-columns:repeat(2,1fr); }
+  .logo-left,.logo-right{ width:65px; }
+}
+@media(max-width:600px){
+  .grid-3{ grid-template-columns:1fr; }
+  .menu-center{ gap:18px; }
+  .menu-center .nav-item{ font-size:14px; }
+  .title-block h1{ font-size:20px; }
+}

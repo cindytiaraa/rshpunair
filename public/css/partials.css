@@ -1,0 +1,193 @@
+/* ===============================
+   SIDEBAR BASE
+   =============================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 220px;
+    height: 100vh;
+
+    background: linear-gradient(180deg, #003b6d, #005fa3);
+    color: white;
+
+    padding: 20px 16px;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    overflow-y: auto;
+}
+
+/* ===============================
+   TITLE
+   =============================== */
+.sidebar-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* ===============================
+   ROLE WRAPPER (ADMIN / DOKTER / DLL)
+   =============================== */
+.sidebar-admin,
+.sidebar-dokter,
+.sidebar-perawat,
+.sidebar-resepsionis,
+.sidebar-pemilik {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ===============================
+   SECTION LABEL
+   =============================== */
+.sidebar strong {
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+/* ===============================
+   DIVIDER
+   =============================== */
+.sidebar hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin: 12px 0;
+}
+
+/* ===============================
+   LINK BASE
+   =============================== */
+.sidebar a {
+    text-decoration: none;
+    color: white;
+
+    padding: 10px 12px;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+}
+
+/* hover */
+.sidebar a:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateX(4px);
+}
+
+/* ===============================
+   ACTIVE STATE (optional)
+   =============================== */
+.sidebar a.active {
+    background: #ffc857;
+    color: #003b6d;
+    font-weight: 700;
+}
+
+/* ===============================
+   ICON-LIKE SPACING (OPTIONAL)
+   =============================== */
+.sidebar a::before {
+    content: "•";
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+/* ===============================
+   HEADER ROLE
+   =============================== */
+.header-role {
+    position: fixed;
+    top: 0;
+    left: 220px; /* sama dengan lebar sidebar */
+    right: 0;
+    height: 70px;
+
+    background: linear-gradient(135deg, #003b6d, #0078b8);
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+/* kiri (judul) */
+.header-left strong {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-left small {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* tombol logout */
+.header-role .btn-danger {
+    background: #e63946;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.header-role .btn-danger:hover {
+    background: #c5303d;
+}
+
+/* ===============================
+   ALERT
+   =============================== */
+.alert {
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+/* success */
+.alert-success {
+    background: #e7f6ec;
+    color: #1e7e34;
+    border-left: 5px solid #28a745;
+}
+
+/* error */
+.alert-error {
+    background: #fdecea;
+    color: #b02a37;
+    border-left: 5px solid #dc3545;
+}
+
+.alert-error ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+/* ===============================
+   FOOTER ROLE
+   =============================== */
+.footer-role {
+    margin-left: 220px;
+    padding: 16px;
+    text-align: center;
+    background: linear-gradient(180deg, #003b6d, #004b85);
+    color: white;
+    font-size: 13px;
+}

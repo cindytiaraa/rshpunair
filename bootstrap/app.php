@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use Illuminate\Foundation\Configuration\Middleware;
+
+return Application::configure()
+    ->withRouting(
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware): void {
+    $middleware->alias([
+            'admin'       => \App\Http\Middleware\IsAdministrator::class,
+            'dokter'      => \App\Http\Middleware\IsDokter::class,
+            'perawat'     => \App\Http\Middleware\IsPerawat::class,
+            'resepsionis' => \App\Http\Middleware\IsResepsionis::class,
+            'pemilik'     => \App\Http\Middleware\IsPemilik::class,
+        ]);
+    })
+    ->withExceptions(function (Exceptions $exceptions): void {
+        //
+    })->create();

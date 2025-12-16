@@ -1,0 +1,57 @@
+@extends('layouts.main')
+
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/partials.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+<div class="admin-content">
+
+    <div class="page-header">
+        <h2>Data Kategori Klinis</h2>
+        <a href="{{ route('admin.kategori_klinis.create') }}" class="btn-primary">
+            + Tambah Kategori Klinis
+        </a>
+    </div>
+
+    @include('partials.alert')
+
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kategori Klinis</th>
+                    <th width="180">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($kategoriKlinis as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->nama_kategori_klinis }}</td>
+                        <td>
+                            <a href="{{ route('admin.kategori_klinis.edit', $item->idkategori_klinis) }}"
+                               class="btn-warning">
+                                Edit
+                            </a>
+
+                            <form action="{{ route('admin.kategori_klinis.destroy', $item->idkategori_klinis) }}"
+                                  method="POST"
+                                  class="inline-form"
+                                  onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn-danger">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="3" align="center">Data belum tersedia</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+</div>
+@endsection
