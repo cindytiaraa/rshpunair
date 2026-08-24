@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 // Dashboard umum / landing
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
@@ -48,8 +48,9 @@ Route::middleware(['auth', 'admin'])
     ->name('admin.')
     ->group(function () {
 
-    Route::get('/dashboard', [DashboardAdminController::class, 'index'])
-    ->name('dashboard_admin');
+    Route::resource('dashboard_admin',
+        \App\Http\Controllers\Admin\DashboardAdminController::class
+    );
 
     Route::resource('user', 
         \App\Http\Controllers\Admin\UserController::class
@@ -104,33 +105,22 @@ Route::middleware(['auth', 'resepsionis'])
     ->name('resepsionis.')
     ->group(function () {
 
-    Route::get('/dashboard',
-        [\App\Http\Controllers\Resepsionis\DashboardResepsionisController::class, 'index']
-    )->name('dashboard_resepsionis');
+    Route::resource('dashboard_resepsionis',
+        \App\Http\Controllers\Resepsionis\DashboardResepsionisController::class
+    );
 
-    Route::get('/pemilik/create',
-        [\App\Http\Controllers\Resepsionis\PemilikController::class, 'create']
-    )->name('form_pemilik');
+    Route::resource('pemilik',
+            \App\Http\Controllers\Resepsionis\PemilikController::class
+        )->only(['create', 'store']);
 
-    Route::post('/pemilik/store',
-        [\App\Http\Controllers\Resepsionis\PemilikController::class, 'store']
-    )->name('store_pemilik');
+    Route::resource('pet',
+        \App\Http\Controllers\Resepsionis\PetController::class
+    )->only(['create', 'store']);
 
-    Route::get('/pet/create',
-        [\App\Http\Controllers\Resepsionis\PetController::class, 'create']
-    )->name('form_pet');
-
-    Route::post('/pet/store',
-        [\App\Http\Controllers\Resepsionis\PetController::class, 'store']
-    )->name('store_pet');
-
-    Route::get('/antrian/create',
-        [\App\Http\Controllers\Resepsionis\TemuDokterController::class, 'create']
-    )->name('form_antrian');
-
-    Route::post('/antrian/store',
-        [\App\Http\Controllers\Resepsionis\TemuDokterController::class, 'store']
-    )->name('store_antrian');
+    Route::resource('antrian',
+        \App\Http\Controllers\Resepsionis\TemuDokterController::class
+    )->only(['create', 'store']);
+    
 });
 
 
@@ -145,9 +135,9 @@ Route::middleware(['auth', 'perawat'])
     ->name('perawat.')
     ->group(function () {
 
-    Route::get('/dashboard',
-        [\App\Http\Controllers\Perawat\DashboardPerawatController::class, 'index']
-    )->name('dashboard_perawat');
+    Route::resource('dashboard_resepsionis',
+        \App\Http\Controllers\Resepsionis\DashboardResepsionisController::class
+    );
 
     Route::resource('rekam_medis',
         \App\Http\Controllers\Perawat\RekamMedisController::class
